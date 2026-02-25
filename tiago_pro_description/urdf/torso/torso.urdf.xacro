@@ -34,14 +34,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://tiago_pro_description/meshes/torso/torso_fixed.stl" />
+          <mesh filename="file://$(find tiago_pro_description)/meshes/torso/torso_fixed.stl" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://tiago_pro_description/meshes/torso/torso_fixed_collision.stl" />
+          <mesh filename="file://$(find tiago_pro_description)/meshes/torso/torso_fixed_collision.stl" />
         </geometry>
       </collision>
     </link>
@@ -89,7 +89,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://tiago_pro_description/meshes/torso/torso_lift_link.stl" />
+          <mesh filename="file://$(find tiago_pro_description)/meshes/torso/torso_lift_link.stl" />
         </geometry>
         <material name="">
           <color rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
@@ -98,13 +98,13 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://tiago_pro_description/meshes/torso/torso_lift_link_collision.stl" />
+          <mesh filename="file://$(find tiago_pro_description)/meshes/torso/torso_lift_link_collision.stl" />
         </geometry>
       </collision>
       <collision>
         <origin xyz="-0.226436438571948 3.12797385809451E-05 0.00524038105676683" rpy="0 0 -1.5707963267949" />
         <geometry>
-          <mesh filename="package://tiago_pro_description/meshes/torso/laptop_tray_collision.stl" />
+          <mesh filename="file://$(find tiago_pro_description)/meshes/torso/laptop_tray_collision.stl" />
         </geometry>
       </collision>
     </link>

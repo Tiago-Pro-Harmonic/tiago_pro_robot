@@ -42,7 +42,7 @@
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
-            <mesh filename="package://tiago_pro_description/meshes/pilot_station/fixed_sit_station.stl" />
+            <mesh filename="file://$(find tiago_pro_description)/meshes/pilot_station/fixed_sit_station.stl" />
         </geometry>
         <material
           name="">
@@ -55,7 +55,7 @@
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
-            <mesh filename="package://tiago_pro_description/meshes/pilot_station/fixed_sit_station.stl" />
+            <mesh filename="file://$(find tiago_pro_description)/meshes/pilot_station/fixed_sit_station.stl" />
         </geometry>
       </collision>
     </link>
