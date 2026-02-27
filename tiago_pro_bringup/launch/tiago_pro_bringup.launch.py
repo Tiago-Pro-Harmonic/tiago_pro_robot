@@ -56,7 +56,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     default_controllers = include_scoped_launch_py_description(
         pkg_name='tiago_pro_controller_configuration',
         paths=['launch', 'default_controllers.launch.py'],
-        launch_arguments={"arm_type_right": launch_args.arm_type_right,
+        launch_arguments={"base_type": launch_args.base_type,
+                          "arm_type_right": launch_args.arm_type_right,
                           "arm_type_left": launch_args.arm_type_left,
                           "end_effector_right": launch_args.end_effector_right,
                           "end_effector_left": launch_args.end_effector_left,
@@ -72,28 +73,28 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_description.add_action(default_controllers)
 
-    play_motion2 = include_scoped_launch_py_description(
-        pkg_name='tiago_pro_bringup',
-        paths=['launch', 'tiago_pro_play_motion2.launch.py'],
-        launch_arguments={"arm_type_right": launch_args.arm_type_right,
-                          "arm_type_left": launch_args.arm_type_left,
-                          "end_effector_right": launch_args.end_effector_right,
-                          "end_effector_left": launch_args.end_effector_left,
-                          "wrist_model_right": launch_args.wrist_model_right,
-                          "wrist_model_left": launch_args.wrist_model_left,
-                          "use_sim_time": launch_args.use_sim_time,
-                          "has_teleop_arms": launch_args.has_teleop_arms
-                          })
+    # play_motion2 = include_scoped_launch_py_description(
+    #     pkg_name='tiago_pro_bringup',
+    #     paths=['launch', 'tiago_pro_play_motion2.launch.py'],
+    #     launch_arguments={"arm_type_right": launch_args.arm_type_right,
+    #                       "arm_type_left": launch_args.arm_type_left,
+    #                       "end_effector_right": launch_args.end_effector_right,
+    #                       "end_effector_left": launch_args.end_effector_left,
+    #                       "wrist_model_right": launch_args.wrist_model_right,
+    #                       "wrist_model_left": launch_args.wrist_model_left,
+    #                       "use_sim_time": launch_args.use_sim_time,
+    #                       "has_teleop_arms": launch_args.has_teleop_arms
+    #                       })
 
-    launch_description.add_action(play_motion2)
+    # launch_description.add_action(play_motion2)
 
-    twist_mux = include_scoped_launch_py_description(
-        pkg_name="tiago_pro_bringup",
-        paths=["launch", "twist_mux.launch.py"],
-        launch_arguments={"use_sim_time": launch_args.use_sim_time}
-    )
+    # twist_mux = include_scoped_launch_py_description(
+    #     pkg_name="tiago_pro_bringup",
+    #     paths=["launch", "twist_mux.launch.py"],
+    #     launch_arguments={"use_sim_time": launch_args.use_sim_time}
+    # )
 
-    launch_description.add_action(twist_mux)
+    # launch_description.add_action(twist_mux)
 
     robot_state_publisher = include_scoped_launch_py_description(
         pkg_name='tiago_pro_description',
@@ -125,16 +126,16 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_description.add_action(robot_state_publisher)
 
-    gripper_wrapper = include_scoped_launch_py_description(
-        pkg_name='tiago_pro_bringup',
-        paths=['launch', 'gripper_grasper.launch.py'],
-        launch_arguments={"arm_type_right": launch_args.arm_type_right,
-                          "arm_type_left": launch_args.arm_type_left,
-                          "end_effector_right": launch_args.end_effector_right,
-                          "end_effector_left": launch_args.end_effector_left
-                          })
+    # gripper_wrapper = include_scoped_launch_py_description(
+    #     pkg_name='tiago_pro_bringup',
+    #     paths=['launch', 'gripper_grasper.launch.py'],
+    #     launch_arguments={"arm_type_right": launch_args.arm_type_right,
+    #                       "arm_type_left": launch_args.arm_type_left,
+    #                       "end_effector_right": launch_args.end_effector_right,
+    #                       "end_effector_left": launch_args.end_effector_left
+    #                       })
 
-    launch_description.add_action(gripper_wrapper)
+    # launch_description.add_action(gripper_wrapper)
 
     return
 

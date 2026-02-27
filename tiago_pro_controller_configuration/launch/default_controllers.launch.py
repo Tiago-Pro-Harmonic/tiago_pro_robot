@@ -51,9 +51,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     pkg_share_folder = get_package_share_directory(
         'tiago_pro_controller_configuration')
 
-    # Mobile base controller
-    launch_description.add_action(
-        OpaqueFunction(function=launch_mobile_base_controller))
+    # # Mobile base controller
+    # launch_description.add_action(
+    #     OpaqueFunction(function=launch_mobile_base_controller))
 
     # Joint state broadcaster
     joint_state_broadcaster = GroupAction(
@@ -94,6 +94,18 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         pkg_name="tiago_pro_head_controller_configuration",
         paths=["launch", "head_controller.launch.py"])
     launch_description.add_action(head_controller)
+    
+    # Base controller
+    # mobile_base_controller = include_scoped_launch_py_description(
+    #     pkg_name="omni_base_controller_configuration",
+    #     paths=["launch", "mobile_base_controller.launch.py"],
+    #     launch_arguments={
+    #         "use_sim_time": "True",
+    #         "is_public_sim": launch_args.is_public_sim,
+    #         "namespace": launch_args.namespace,
+    #     }
+    # )
+    # launch_description.add_action(mobile_base_controller)
 
     # Add controller of right arm, end-effector and ft-sensor
     launch_description.add_action(OpaqueFunction(
@@ -105,13 +117,13 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         function=configure_side_controllers, args=['left'],
         condition=LaunchConfigurationNotEquals('arm_type_left', 'no-arm')))
 
-    launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, args=['teleop_right'],
-        condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
+    # launch_description.add_action(OpaqueFunction(
+    #     function=configure_side_controllers, args=['teleop_right'],
+    #     condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
 
-    launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, args=['teleop_left'],
-        condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
+    # launch_description.add_action(OpaqueFunction(
+    #     function=configure_side_controllers, args=['teleop_left'],
+    #     condition=IfCondition(LaunchConfiguration("has_teleop_arms"))))
 
     return
 
@@ -225,24 +237,24 @@ def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: boo
     return concatenated_string
 
 
-def launch_mobile_base_controller(context, *args, **kwargs):
+# def launch_mobile_base_controller(context, *args, **kwargs):
 
-    base_type = read_launch_argument("base_type", context)
-    use_sim_time = read_launch_argument("use_sim_time", context)
-    is_public_sim = read_launch_argument("is_public_sim", context)
+#     base_type = read_launch_argument("base_type", context)
+#     use_sim_time = read_launch_argument("use_sim_time", context)
+#     is_public_sim = read_launch_argument("is_public_sim", context)
 
-    base_controller_package = base_type + "_controller_configuration"
+#     base_controller_package = base_type + "_controller_configuration"
 
-    mobile_base_controller = include_scoped_launch_py_description(
-        pkg_name=base_controller_package,
-        paths=["launch", "mobile_base_controller.launch.py"],
-        launch_arguments={
-            "use_sim_time": use_sim_time,
-            "is_public_sim": is_public_sim,
-        }
-    )
+#     mobile_base_controller = include_scoped_launch_py_description(
+#         pkg_name=base_controller_package,
+#         paths=["launch", "mobile_base_controller.launch.py"],
+#         launch_arguments={
+#             "use_sim_time": use_sim_time,
+#             "is_public_sim": is_public_sim,
+#         }
+#     )
 
-    return [mobile_base_controller]
+#     return [mobile_base_controller]
 
 
 def generate_launch_description():
