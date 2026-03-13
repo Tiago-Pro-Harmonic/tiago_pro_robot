@@ -25,7 +25,6 @@
   gz_type_name: "gz.msgs.Twist"
   direction: ROS_TO_GZ
 
-
 # camera d435
 - ros_topic_name: "/head_front_camera/depth/camera_info"
   gz_topic_name: "/head_front_camera/depth/camera_info"
@@ -39,6 +38,30 @@
   gz_type_name: "gz.msgs.PointCloudPacked"
   direction: GZ_TO_ROS
 
+# Wrist cameras
+- ros_topic_name: "/gripper_left_camera/depth/camera_info"
+  gz_topic_name: "/gripper_left_camera/depth/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_left_camera/depth/color/points"
+  gz_topic_name: "/gripper_left_camera/depth/image_rect_raw/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_right_camera/depth/camera_info"
+  gz_topic_name: "/gripper_right_camera/depth/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_right_camera/depth/color/points"
+  gz_topic_name: "/gripper_right_camera/depth/image_rect_raw/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
 
 # Front laser
 - ros_topic_name: "/scan_front_raw"
