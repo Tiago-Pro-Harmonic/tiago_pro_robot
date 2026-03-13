@@ -25,7 +25,7 @@
   gz_type_name: "gz.msgs.Twist"
   direction: ROS_TO_GZ
 
-# camera d435
+# Head camera d435 (depth subtopics)
 - ros_topic_name: "/head_front_camera/depth/camera_info"
   gz_topic_name: "/head_front_camera/depth/camera_info"
   ros_type_name: "sensor_msgs/msg/CameraInfo"
@@ -38,7 +38,32 @@
   gz_type_name: "gz.msgs.PointCloudPacked"
   direction: GZ_TO_ROS
 
-# Wrist cameras
+# Head camera d435 (rgbd_camera topics)
+- ros_topic_name: "/head_front_camera/camera_info"
+  gz_topic_name: "/head_front_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/head_front_camera/image"
+  gz_topic_name: "/head_front_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/head_front_camera/depth_image"
+  gz_topic_name: "/head_front_camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/head_front_camera/points"
+  gz_topic_name: "/head_front_camera/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# Wrist cameras (depth subtopics)
 - ros_topic_name: "/gripper_left_camera/depth/camera_info"
   gz_topic_name: "/gripper_left_camera/depth/camera_info"
   ros_type_name: "sensor_msgs/msg/CameraInfo"
@@ -59,6 +84,55 @@
 
 - ros_topic_name: "/gripper_right_camera/depth/color/points"
   gz_topic_name: "/gripper_right_camera/depth/image_rect_raw/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# Wrist cameras (rgbd_camera topics)
+- ros_topic_name: "/gripper_left_camera/camera_info"
+  gz_topic_name: "/gripper_left_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_left_camera/image"
+  gz_topic_name: "/gripper_left_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_left_camera/depth_image"
+  gz_topic_name: "/gripper_left_camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_left_camera/points"
+  gz_topic_name: "/gripper_left_camera/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_right_camera/camera_info"
+  gz_topic_name: "/gripper_right_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_right_camera/image"
+  gz_topic_name: "/gripper_right_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_right_camera/depth_image"
+  gz_topic_name: "/gripper_right_camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/gripper_right_camera/points"
+  gz_topic_name: "/gripper_right_camera/points"
   ros_type_name: "sensor_msgs/msg/PointCloud2"
   gz_type_name: "gz.msgs.PointCloudPacked"
   direction: GZ_TO_ROS
