@@ -3,3 +3,9 @@
     update_rate: 100 # Hz
     use_sim_time: true
 
+# GazeboSimSystem reads position_proportional_gain from its own node (gz_ros_control),
+# not from /controller_manager.
+/gz_ros_control:
+  ros__parameters:
+    position_proportional_gain: 20.0
+

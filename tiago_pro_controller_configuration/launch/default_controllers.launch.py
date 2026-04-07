@@ -198,7 +198,8 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
     end_effector_controller = include_scoped_launch_py_description(
         pkg_name=ee_pkg_name,
         paths=['launch', ee_launch_file],
-        launch_arguments={"side": end_effector_side},
+        launch_arguments={"side": end_effector_side,
+                          "use_sim_time": LaunchConfiguration("use_sim_time")},
         condition=LaunchConfigurationNotEquals(
             end_effector_arg_name, 'no-end-effector')
     )
