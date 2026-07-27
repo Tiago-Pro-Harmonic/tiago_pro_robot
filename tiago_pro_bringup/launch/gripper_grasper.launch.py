@@ -16,6 +16,7 @@
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch import LaunchDescription
 from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.robot_arguments import CommonArgs
 from tiago_pro_description.launch_arguments import TiagoProArgs
 from launch.substitutions import PythonExpression, LaunchConfiguration
 from launch.conditions import IfCondition
@@ -30,6 +31,7 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type_left: DeclareLaunchArgument = TiagoProArgs.arm_type_left
     end_effector_right: DeclareLaunchArgument = TiagoProArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoProArgs.end_effector_left
+    use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -61,7 +63,8 @@ def set_side_gripper(context, side='', *args, **kwargs):
     gripper_wrapper = include_scoped_launch_py_description(
         pkg_name='pal_pro_gripper_wrapper',
         paths=['launch', 'pal_pro_gripper_wrapper.launch.py'],
-        launch_arguments={"side": side}
+        launch_arguments={"side": side,
+                          "use_sim_time": LaunchConfiguration('use_sim_time')}
         )
 
     return [gripper_wrapper]

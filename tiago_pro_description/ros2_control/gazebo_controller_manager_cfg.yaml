@@ -3,3 +3,11 @@
     update_rate: 100 # Hz
     use_sim_time: true
 
+/gz_ros_control:
+  ros__parameters:
+    # Lower than the gz_ros2_control default (0.1): gentler approach to the
+    # commanded position, to reduce overshoot into joint limits (see
+    # https://github.com/ros-controls/gz_ros2_control/issues/165, unfixed
+    # DART bug on Harmonic's dartsim version). Needed for every
+    # position-controlled joint, not just the (former) gripper mimic joints.
+    position_proportional_gain: 0.02

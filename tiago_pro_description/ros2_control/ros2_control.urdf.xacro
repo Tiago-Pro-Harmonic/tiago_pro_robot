@@ -34,7 +34,7 @@
     </ros2_control>
   </xacro:macro>
 
-  <xacro:macro name="ros2_control_arms">
+  <xacro:macro name="ros2_control_arms" params="sim_type:=no-simulation">
     <!-- arm left -->
     <xacro:if value="${has_arm_left}">
       <xacro:ros2_control_arm name="arm_left_1" reduction="121.0" offset_value="${arm_left_1_joint_offset}" use_sea_transmission="${torque_estimation}" initial_position="0.5" />
@@ -50,7 +50,7 @@
       </xacro:if>
 
       <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
-        <xacro:ros2_control_pal_pro_gripper name="gripper_left" reduction="1.0" />
+        <xacro:ros2_control_pal_pro_gripper name="gripper_left" reduction="1.0" sim_type="${sim_type}" />
       </xacro:if>
     </xacro:if>
 
@@ -71,7 +71,7 @@
 
       <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
         <!-- pal-pro-gripper -->
-        <xacro:ros2_control_pal_pro_gripper name="gripper_right" reduction="1.0" />
+        <xacro:ros2_control_pal_pro_gripper name="gripper_right" reduction="1.0" sim_type="${sim_type}" />
       </xacro:if>
     </xacro:if>
 
@@ -103,10 +103,10 @@
         </xacro:if>
 
         <xacro:if value="${end_effector_teleop_right == 'pal-pro-gripper'}">
-          <xacro:ros2_control_pal_pro_gripper name="gripper_teleop_right" reduction="1.0" />
+          <xacro:ros2_control_pal_pro_gripper name="gripper_teleop_right" reduction="1.0" sim_type="${sim_type}" />
         </xacro:if>
         <xacro:if value="${end_effector_teleop_left == 'pal-pro-gripper'}">
-          <xacro:ros2_control_pal_pro_gripper name="gripper_teleop_left" reduction="1.0" />
+          <xacro:ros2_control_pal_pro_gripper name="gripper_teleop_left" reduction="1.0" sim_type="${sim_type}" />
         </xacro:if>
 
 
@@ -190,7 +190,7 @@
         <xacro:ros2_control_head_offset />
 
         <!-- arms -->
-        <xacro:ros2_control_arms/>
+        <xacro:ros2_control_arms sim_type="gazebo"/>
         <xacro:arg name="pid_controllers" default="false"/>
 
         <xacro:if value="${end_effector_right == 'allegro-hand'}">
@@ -256,7 +256,7 @@
         </hardware>
 
         <!-- arms -->
-        <xacro:ros2_control_arms/>
+        <xacro:ros2_control_arms sim_type="no-simulation"/>
         <xacro:ros2_control_torso name="torso_lift" reduction="1.0" />
 
       </ros2_control>
